@@ -393,11 +393,13 @@ FEATURES
   max-width: 250px;
   height: 320px;
   background-color: rgb(204, 204, 204);
+  border-radius: 6px;
   margin-bottom: 8px;
 }
 
 .skeleton {
   background-color: rgb(227, 227, 227) !important;
+  border-radius: 4px;
   margin-bottom: 8px;
 }
 
