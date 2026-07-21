@@ -25,6 +25,9 @@ const Book = ({ book }) => {
     }) */
 
     useEffect(() => {
+
+        mountedRef.current = true;
+
         const image = new Image();
         image.src = book.url;
         image.onload = () => {
