@@ -368,27 +368,36 @@ FEATURES
 
 .books {
   display: flex;
-  flex-wrap: wrap; /* Allow books to wrap */
-  justify-content: center; /* Center the books */
-  margin: 0 -24px; /* Maintain your existing margin */
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -24px;
 }
 
 .book {
-  width: auto; /* Allow width to fit the content */
-  max-width: 250px; /* Limit maximum width */
-  height: fit-content; /* Set a fixed height for all books */
+  width: 275px;           /* FIXED width, not auto — this is the key change */
+  flex: 0 0 275px;        /* prevent flex from stretching/shrinking it */
+  height: fit-content;
   padding: 24px;
   transition: all 300ms ease;
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  box-sizing: border-box;
 }
 
 .book:hover {
   transform: translateY(-4px);
 }
 
+.book__img--wrapper {
+  margin-bottom: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;  /* centers the variable-width image in the fixed box */
+  align-items: flex-end;    /* optional: aligns bottoms if heights vary slightly */
+}
+
 .book__img {
-  max-height: 300px; /* Maintain your image height */
-  width: fit-content; /* Ensure the image width fits its content */
+  height: 300px;       /* FIXED height (not max-height) so all images match */
+  width: auto;          /* let width vary naturally with aspect ratio */
+  max-width: 100%;      /* safety: never overflow the wrapper */
   border-radius: 6px;
   transition: all 300ms ease;
 }
@@ -396,7 +405,7 @@ FEATURES
 .book__img--skeleton {
   width: 100%;
   max-width: 250px;
-  height: 240px;
+  height: 300px;
   background-color: rgb(204, 204, 204);
   border-radius: 6px;
   margin-bottom: 8px;
@@ -427,11 +436,7 @@ FEATURES
   color: #242424;
 }
 
-.book__img--wrapper {
-  margin-bottom: 8px;
-  overflow: hidden;
-  display: flex;
-}
+
 
 .book__title {
   font-size: 20px;
